@@ -7,44 +7,135 @@
   <version>1.0-SNAPSHOT</version>
   <name>spring-security Maven Webapp</name>
   <url>http://maven.apache.org</url>
+
+  <properties>
+    <springframework.version>4.2.3.RELEASE</springframework.version>
+    <springsecurity.version>4.2.3.RELEASE</springsecurity.version>
+  </properties>
+
   <dependencies>
+    <!-- Spring -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>${springframework.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-web</artifactId>
-      <version>4.2.3.RELEASE</version>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>${springframework.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
-      <version>4.2.3.RELEASE</version>
+      <version>${springframework.version}</version>
+    </dependency>
+
+    <!-- Spring Security -->
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+      <version>${springsecurity.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+      <version>${springsecurity.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>javax.servlet.jsp-api</artifactId>
+      <version>2.3.1</version>
     </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>jstl</artifactId>
       <version>1.2</version>
     </dependency>
-      <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
-      <dependency>
-          <groupId>org.springframework.security</groupId>
-          <artifactId>spring-security-config</artifactId>
-          <version>4.2.3.RELEASE</version>
-      </dependency>
-
   </dependencies>
-    <build>
-        <finalName>spring-security</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.2.2.v20140723</version>
-            </plugin>
-        </plugins>
-    </build>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>9.2.2.v20140723</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.2</version>
+          <configuration>
+            <source>1.7</source>
+            <target>1.7</target>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>2.4</version>
+          <configuration>
+            <warSourceDirectory>src/main/webapp</warSourceDirectory>
+            <warName>SpringSecurityHelloWorldAnnotationExample</warName>
+            <failOnMissingWebXml>false</failOnMissingWebXml>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+    <!--<build>-->
+        <!--<finalName>spring-security</finalName>-->
+        <!--<plugins>-->
+
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-war-plugin</artifactId>-->
+                <!--<version>${maven-war-plugin.version}</version>-->
+            <!--</plugin>-->
+        <!--</plugins>-->
+        <!--<resources>-->
+            <!--<resource>-->
+                <!--<directory>src/main/resources</directory>-->
+                <!--<filtering>true</filtering>-->
+            <!--</resource>-->
+        <!--</resources>-->
+
+    <!--</build>-->
+
+    <!--<properties>-->
+        <!--&lt;!&ndash; Spring &ndash;&gt;-->
+        <!--<org.springframework.version>4.3.6.RELEASE</org.springframework.version>-->
+        <!--<org.springframework.security.version>4.2.1.RELEASE</org.springframework.security.version>-->
+
+        <!--&lt;!&ndash; persistence &ndash;&gt;-->
+        <!--<hibernate.version>5.2.5.Final</hibernate.version>-->
+        <!--<mysql-connector-java.version>5.1.40</mysql-connector-java.version>-->
+
+        <!--&lt;!&ndash; various &ndash;&gt;-->
+        <!--<hibernate-validator.version>5.3.3.Final</hibernate-validator.version>-->
+        <!--<javax.servlet.version>3.1.0</javax.servlet.version>-->
+        <!--<jstl.version>1.2</jstl.version>-->
+
+        <!--&lt;!&ndash; util &ndash;&gt;-->
+        <!--<guava.version>19.0</guava.version>-->
+        <!--<commons-lang3.version>3.5</commons-lang3.version>-->
+
+        <!--<httpcore.version>4.4.5</httpcore.version>-->
+        <!--<httpclient.version>4.5.2</httpclient.version>-->
+
+        <!--<rest-assured.version>2.9.0</rest-assured.version>-->
+
+        <!--&lt;!&ndash; Maven plugins &ndash;&gt;-->
+        <!--<maven-war-plugin.version>2.6</maven-war-plugin.version>-->
+        <!--<maven-resources-plugin.version>2.7</maven-resources-plugin.version>-->
+        <!--<cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>-->
+
+    <!--</properties>-->
 </project>
